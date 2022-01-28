@@ -1,0 +1,504 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);
+/* Custom properties/variables  */
+:root {
+  --main-white: #f0f0f0;
+  --main-red: #be3144;
+  --main-blue: #beccec;
+  --main-gray: #303841;
+}
+
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+   * default document font size = 16px, 1rem = 16px, 100% = 16px
+   * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+  */
+  font-size: 25.5%;
+  scroll-behavior: smooth;
+}
+
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+/* Base styles */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem; /* 18px */
+  font-weight: 500;
+  line-height: 1.4;
+  width: 100%;
+}
+
+h1,
+h2 {
+  font-family: 'Reenie Beanie', cursive;
+  font-weight: 500;
+  text-align: center;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 4.2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-white);
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+header{
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(  rgba(0,0,0.5), rgba(0,0,0,0.2),rgba(0,0,0.5) ), url(https://wallpapercave.com/wp/wp2088563.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  
+}
+
+/* nav */
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  position: fixed;
+  height: 65;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(  rgb(108, 137, 233), rgb(61, 53, 53),rgb(94, 43, 128) ), url(https://i.pinimg.com/736x/fb/53/e3/fb53e3d5ab5ae9e53b5a04133e837470.jpg) center no-repeat;
+  background-size: cover;
+  z-index: 10;
+  font-family: 'Reenie Beanie', cursive;
+}
+.brand{
+  font-size: 4rem;
+  color:rgb(202, 34, 34);
+  font-weight: 400;
+  transform: translateX(100rem);
+  animation: slideIn .5s forwards;
+  font-family: 'Reenie Beanie', cursive;
+}
+.brand span{
+  color: white;
+  margin:4px;
+}
+nav ul{
+  display: flex;
+  font-size: 3rem;
+  widows: 12em;
+
+}
+
+nav ul li{
+  list-style: none;
+  transform: translateX(100rem);
+animation: slideIn .5s forwards;
+}
+nav ul li:nth-child(1){
+animation-delay: 0s;
+}
+
+nav ul li:nth-child(2){
+animation-delay: .5s;
+}
+
+nav ul li:nth-child(3){
+animation-delay: 1s;
+}
+
+nav ul li:nth-child(4){
+animation-delay: 1.5s;
+}
+
+nav ul li a{
+  padding: 1rem 0;
+  margin: 50 10rem;
+  position: relative;
+  letter-spacing: 3px;
+}
+
+nav ul li a:last-child{
+  margin-right: 0;
+}
+
+nav ul li a::before, nav ul li a::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height:2px;
+  background-color: crimson;
+  left: 0;
+  transform: scaleX(0);
+  transition: all .5s;
+}
+nav ul li a::before{
+  top: 0;
+  transform-origin: left;
+}
+nav ul li a::after{
+  bottom: 0;
+  transform-origin: right;
+}
+
+nav ul li a:hover::before,
+nav ul li a:hover::after{
+  transform: scaleX(1);
+  
+ 
+}
+
+/* Welcome section */
+.container{
+  max-width: 120rem;
+  width: 90%;
+  margin: 0 auto;
+  
+}
+
+#splash{
+    
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  margin-top: 50px;
+  padding-top: 15%;
+  padding-bottom: 50px;
+  color: #fff;
+  font-size: 3em;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+               0px 8px 13px rgba(0,0,0,0.5),
+               0px 18px 23px rgba(0,0,0,0.1);
+}
+
+  #splash h1{
+    font-size: 2em;
+  }
+
+  #splash a{
+    color: #fff;
+  }
+
+  #splash a:hover{
+    color: #e7e7e7;
+  }
+
+
+@keyframes slideIn{
+  from{
+
+  }
+  to{
+      transform: translateX(0);
+  }
+}
+
+/* Work section */
+#work {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(  rgb(132, 160, 168), rgba(145, 163, 190, 0.2),rgb(105, 99, 126) ), url(https://c4.wallpaperflare.com/wallpaper/455/346/398/macro-blur-keyboard-laptop-wallpaper-preview.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Reenie Beanie', cursive;
+  font-weight: bold;
+}
+.blockquote {/***********************/
+  min-height: 70vh;
+  min-width: 60vh;
+  padding: 5vh 2vw;
+  color: hsl(0, 0%, 3%);
+  margin:150px 10px 100px 10px;
+  border: 10px solid rgba(243, 238, 238, 0.2);
+  bottom:10em;
+	align-self: left;
+  transform:translate(5em,0em);
+  
+}
+.blockquote h1 {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 0px 15px;
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, .8);
+  
+}
+h2 {
+  line-height: 1.5;
+  display: inline;
+  color: rgb(0, 0, 0);
+  font-family: Satisfy;
+  margin:5px 620px 100px 10px;
+  background-image: linear-gradient(
+        transparent 50%,
+        #c068b1 120%,
+        #e6f2f3 30%,
+        transparent 85%,
+        transparent 1000%
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    animation: animatedBackground 2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s forwards;
+}
+@keyframes animatedBackground {
+    to {
+        background-size: 100% 100%;
+    }
+} 
+/**closes here*/
+
+
+@media (max-width: 1000px) {
+  #work {
+    text-align: center;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.welcome-img  {
+  margin-top: 8rem;
+  width: 580px;
+  height: auto;
+}
+
+#mobile-only {
+  display: none;
+}
+
+@media (max-width: 850px){
+  #desktop-only {
+    display: none;
+  }
+  
+  #mobile-only {
+    display: initial;
+    width: 450px;
+    height: auto;
+  }
+}
+
+#subheading {
+  font-size: 5rem;
+  font-weight: 600;
+  margin: 2rem 0;
+}
+
+#subheading span {
+  color: #beb4b4;
+}
+
+@media (max-width: 650px){
+  #subheading {
+    font-size: 4rem;
+  }
+}
+
+
+
+/* Contact section */
+
+
+#skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+
+#contact div {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px;
+  width: 100%;
+}
+
+#contact div article {
+  background: rgb(223, 188, 188);
+  color: black;
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  border-radius: 30px;
+}
+
+#contact div article * {
+  padding: 0 2px;
+}
+
+#contact p {
+  margin: 10px;
+}
+.skills{
+  background: linear-gradient(  rgb(132, 160, 168), rgba(145, 163, 190, 0.2),rgb(105, 99, 126) ), url(https://cdn.wallpapersafari.com/27/88/ZQLTDl.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Reenie Beanie', cursive;
+
+}
+.skills h2{
+  line-height: 1.5;
+  display: inline;
+  color: rgb(0, 0, 0);
+  font-family: Satisfy;
+  font-size: 20px;
+  
+}
+.skills h1{
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 0px 5px;
+  width: 25%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15px;
+  border-radius: 15px;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, .8);
+  }
+  row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*
+* And with max cross-browser enabled.
+* Nobody should ever write this by hand. 
+* Use a preprocesser with autoprefixing.
+*/
+
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.ping{
+  background-color: #cfb3d4;
+  background-size: cover;
+  position: relative;
+  height:250px;
+  overflow: hidden;
+  font-family: 'Reenie Beanie', cursive;
+
+}
+.ping h1{
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 0px 5px;
+  width: 25%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15px;
+  border-radius: 15px;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, .8);
+  }
+
+footer {
+  text-align: center;
+  font-size: 25;
+  padding: 2rem 0;
+  background-color: #e9effa;
+  color: rgb(0, 0, 0);
+}
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
